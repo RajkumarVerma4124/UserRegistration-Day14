@@ -17,4 +17,19 @@ else
 	firstName
 fi
 }
+
+lastName(){
+echo -e "As a User need to enter a valid Last Name - Last name starts with Cap and has minimum 3 characters (UC2) \n"
+read -p "ENTER THE LAST NAME : " lName
+pat="^[A-Z]{1}[a-z]{2,}$"
+if [[ $lName =~ $pat ]];
+then
+	echo "VALID ";
+else
+	echo "Invalid last name \n Last Name Start With Capital and has Minimum 3 Characters "
+	lastName
+fi
+}
+
 firstName
+lastName
