@@ -31,5 +31,20 @@ else
 fi
 }
 
+email(){
+echo -e "\n As a User need to enter a valid email (UC3)"
+read -p "ENTER THE EMAIL ADDRESS : " email
+pat="^[0-9a-zA-Z]{3,7}([.]{1}[0-9a-zA-Z]{1,7})?@[0-9a-zA-Z]{2,7}[.]{1}([a-zA-Z]{2})+([.]{1}[a-zA-Z]{2})?$"
+if [[ $email =~ $pat ]];
+then
+	echo "Valid Email";
+else
+	echo -e " INVALID EMAIL ADDRESS \n EG:- abc.xyz@bl.co.in or abc@bl.co \n you can put your name at abc minimum 3 chracters and xyz and .in is optional bl and co is 2 fixed characters"
+	email
+fi
+}
+
 firstName
 lastName
+email
+
