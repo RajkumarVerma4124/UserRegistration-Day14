@@ -34,6 +34,7 @@ fi
 email(){
 echo -e "\n As a User need to enter a valid email (UC3)"
 read -p "ENTER THE EMAIL ADDRESS : " email
+
 pat="^[0-9a-zA-Z]{3,7}([.]{1}[0-9a-zA-Z]{1,7})?@[0-9a-zA-Z]{2,7}[.]{1}([a-zA-Z]{2})+([.]{1}[a-zA-Z]{2})?$"
 if [[ $email =~ $pat ]];
 then
@@ -61,21 +62,23 @@ fi
 passwordFunction()
 {
 echo -e "User need to follow pre-defined Password rules.\nRule1 – minimum 8 characters (UC5)\nRule2 – Should have at least 1 Upper Case (UC6)"
-echo -e "Rule3-Should have at least 1 numeric number in the password (UC8)"
+echo -e "Rule3-Should have at least 1 numeric number in the password (UC7) \nRule4 – Has exactly 1 Special Character (UC8)"
 read -p "ENTER THE PASSWORD : " password
-#pat="^(?=.*[A-Z])[a-zA-z]{8,}$"
-if [[ ${#password} -gt 7 && "$password" == *[[:upper:]]* && "$password" == *[[:digit:]]* ]]
+#pat="^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z]{8,}$"
+count=${password//[^@#$%*+=-_!&()\-_=+;:,<.>]/}
+
+if [[ ${#password} -gt 7 && "$password" == *[[:upper:]]* && "$password" == *[[:digit:]]*  && "$password" != *[[:space:]]* && ${#count} -eq 1 ]]
 then
 	echo "Valid Password"
 else
 	echo -e "Invalid PassWord it should be minimum 8 characters \nPassword Should Have atleast One Capital Letter"
-	echo "Password Should Have atleast One digit"
+	echo -e "Password Should Have atleast One digit \nPassword has exactly 1 Special Character \n"
 	passwordFunction
 fi
 }
 
-#firstName
-#lastName
-#email
-#phoneNumber
+firstName
+lastName
+email
+phoneNumber
 passwordFunction
