@@ -44,7 +44,21 @@ else
 fi
 }
 
+phoneNumber(){
+echo -e "\n As a User need to follow pre-defined Mobile Format - E.g. 91 9919819801 - Country code follow by space and 10 digit number (UC4)"
+read -p "ENTER THE PHONE NUMBER : " phoneNo
+pat="^91[ ][0-9]{10}$"
+if [[ $phoneNo =~ $pat ]]
+then
+	echo "Valid Phone Number"
+else
+	echo "Invalid Phone Number It Should be 91 followed by space then 10 digit phone number"
+	echo "EG:- 91 1234567895"
+	phoneNumber
+fi
+}
 firstName
 lastName
 email
+phoneNumber
 
