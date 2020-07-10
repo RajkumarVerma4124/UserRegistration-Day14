@@ -34,8 +34,7 @@ fi
 email(){
 echo -e "\n As a User need to enter a valid email (UC3)"
 read -p "ENTER THE EMAIL ADDRESS : " email
-
-pat="^[0-9a-zA-Z]{3,7}([.]{1}[0-9a-zA-Z]{1,7})?@[0-9a-zA-Z]{2,7}[.]{1}([a-zA-Z]{2})+([.]{1}[a-zA-Z]{2})?$"
+pat="^[0-9a-zA-Z]{1,7}([._+-][0-9a-zA-Z]{1,7})*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2,3})*$"
 if [[ $email =~ $pat ]];
 then
 	echo "Valid Email";
