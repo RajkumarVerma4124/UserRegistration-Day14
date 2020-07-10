@@ -57,8 +57,23 @@ else
 	phoneNumber
 fi
 }
+
+passwordFunction()
+{
+echo -e "User need to follow pre-defined Password rules.\nRule1 – minimum 8 characters (UC5)"
+read -p "ENTER THE PASSWORD : " password
+pat="^[a-zA-Z]{8,}$"
+if [[ $password =~ $pat ]]
+then
+	echo "Valid Password"
+else
+	echo -e "Invalid PassWord it should be minimum 8 characters \n"
+	passwordFunction
+fi
+}
+
 firstName
 lastName
 email
 phoneNumber
-
+passwordFunction
