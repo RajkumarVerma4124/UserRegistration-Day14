@@ -61,13 +61,15 @@ fi
 passwordFunction()
 {
 echo -e "User need to follow pre-defined Password rules.\nRule1 – minimum 8 characters (UC5)\nRule2 – Should have at least 1 Upper Case (UC6)"
+echo -e "Rule3-Should have at least 1 numeric number in the password (UC8)"
 read -p "ENTER THE PASSWORD : " password
 #pat="^(?=.*[A-Z])[a-zA-z]{8,}$"
-if [[ ${#password} -gt 7 && "$password" == *[[:upper:]]* ]]
+if [[ ${#password} -gt 7 && "$password" == *[[:upper:]]* && "$password" == *[[:digit:]]* ]]
 then
 	echo "Valid Password"
 else
 	echo -e "Invalid PassWord it should be minimum 8 characters \nPassword Should Have atleast One Capital Letter"
+	echo "Password Should Have atleast One digit"
 	passwordFunction
 fi
 }
